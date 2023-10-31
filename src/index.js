@@ -3,11 +3,9 @@ import express from 'express';
 
 const app = express();
 
-
 const joiner = (pathx) => {
     return path.join(process.cwd(), `./src${pathx}`)
 }
-
 
 // Middleware para parsear el body de las solicitudes
 app.use(express.json());
