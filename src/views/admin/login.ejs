@@ -1,17 +1,29 @@
-<%- include('../components/head.ejs', {title: 'hola'}) -%>
+<%- include('../../components/head.ejs', {title: 'hola'}) -%>
 
-<form id="formAdmin">
-  <label for="name">Nombre</label>
-  <input type="text" name="name" id="name" placeholder="name" />
+<main class="loginAdmin">
+  <form id="formAdmin" action="/admin/login" method="post">
+    <h2>Admin</h2>
+    <div class="containerInput">
+      <label for="name">Nombre:</label>
+      <input type="text" name="name" id="name" placeholder="name" />
+    </div>
 
-  <label for="password">Contraseña</label>
-  <input type="password" name="password" id="password" placeholder="password" />
+    <div class="containerInput">
+      <label for="password">Contraseña:</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+      />
+    </div>
 
-  <button id="sendForm">Enviar</button>
-</form>
+    <button id="sendForm" class="btn-simple">Enviar</button>
+  </form>
+</main>
 
 <script>
-  $("sendForm").addEventListener("click", (e) => {
+  /*  $("sendForm").addEventListener("click", (e) => {
     e.preventDefault();
 
     data = {
@@ -28,5 +40,7 @@
       .catch((err) => {
         console.log(err);
       });
-  });
+  }); */
 </script>
+
+<%- include('../../components/body.ejs') -%>

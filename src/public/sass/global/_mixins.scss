@@ -1,0 +1,142 @@
+// medidas denamicas de min-height
+@mixin minHeight() {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+//darle tamaño a un elemento cuadrado
+@mixin cuadrado($sizew, $sizeh: $sizew) {
+  height: $sizeh;
+  width: $sizew;
+}
+// centrar elementos
+@mixin center {
+  display: grid;
+  place-content: center;
+}
+
+@mixin flexCenter($x: center, $y: center) {
+  display: flex;
+  justify-content: $x;
+  align-items: $y;
+}
+
+// width absoluto
+@mixin width($size) {
+  width: $size;
+  min-width: $size;
+  max-width: $size;
+}
+
+// height absoluto
+@mixin height($size) {
+  height: $size;
+  min-height: $size;
+  max-height: $size;
+}
+
+//width hidden
+@mixin width-hidden($size) {
+  @include width($size);
+  overflow: hidden;
+  opacity: 0;
+}
+
+//width visible
+@mixin width-visible($size) {
+  @include width($size);
+  overflow: visible;
+  opacity: 1;
+}
+
+// visibility hidden
+@mixin visibility-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+// visibility hidden
+@mixin visibility-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+//
+@mixin transitionElement($element) {
+  transition: $element 0.5s ease;
+}
+
+//
+@mixin distribucion-responsiva($size: 360px, $cantidad-de-elementos: 1fr) {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax($size, $cantidad-de-elementos)
+  );
+
+  @media screen and (max-width: 360px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(95vw, $cantidad-de-elementos)
+    );
+  }
+}
+
+// personalizar scrollbars
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  /* &{
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  } */
+}
+
+// mostrar y ocultar elementos
+@mixin fade($type) {
+  @if $type== "hide" {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+  } @else if $type== "show" {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+  }
+}
+
+@mixin bgImg(
+  $size: 100%,
+  $bgColor2: rgba(#0b0b0e, 0.8),
+  $blur: 10px,
+  $url: "https://genarogg.github.io/genarogg/img/mio-general/pat.svg"
+) {
+  backdrop-filter: blur($blur);
+  background-color: $bgColor2;
+  background-image: url($url);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+
+@mixin letra($size) {
+  font-size: $size;
+  margin-bottom: $size;
+}
