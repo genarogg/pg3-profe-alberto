@@ -12,7 +12,10 @@ Imagen.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-
+    destacado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
 },
     {
         sequelize,

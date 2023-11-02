@@ -24,12 +24,12 @@ const crearProducto = async (req, res) => {
 
         // Crea las imágenes asociadas al producto
         
-        const url = `/uploads/${req.file.originalname}`
+       /*  const url = `/uploads/${req.file.originalname}`
         const nuevasImagenes = await Imagen.create({
             producto_id: nuevoProducto.id,
             url,
  
-        });
+        }); */
 
         return res.status(201).json({ mensaje: "Producto creado con éxito", producto: nuevoProducto, imagenes: nuevasImagenes });
     } catch (error) {

@@ -4,7 +4,12 @@ import upload from '../config/multer.js';
 
 const router = express.Router();
 
-router.post('/new-producto', upload.single('imagen'), crearProducto);
+router.post('/new-producto', upload.fields([
+    { name: 'img1', maxCount: 1 },
+    { name: 'img2', maxCount: 1 },
+    { name: 'img3', maxCount: 1 },
+    { name: 'img4', maxCount: 1 },
+]), crearProducto);
 
 router.get('/obtener-productos', getAllProductos);
 
