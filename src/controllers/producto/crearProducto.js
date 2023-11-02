@@ -6,7 +6,9 @@ const crearProducto = async (req, res) => {
 
     try {
         // Datos del producto desde la solicitud
-        const { nombre, codigo, precio, descripcion, categoria, imagenes } = req.body;
+        console.log();
+
+        const { nombre, codigo, precio, descripcion, categoria, imagen } = req.body;
 
         // Crea la categoría
         const nuevaCategoria = await Categoria.create({ nombre: categoria });
@@ -21,13 +23,13 @@ const crearProducto = async (req, res) => {
         });
 
         // Crea las imágenes asociadas al producto
-        const nuevasImagenes = await Imagen.bulkCreate(
-            imagenes.map((imagen) => ({
-                producto_id: nuevoProducto.id,
-                url: imagen.url,
-                destacado: imagen.destacado,
-            }))
-        );
+        
+        const url = `/uploads/${req.file.originalname}`
+        const nuevasImagenes = await Imagen.create({
+            producto_id: nuevoProducto.id,
+            url,
+ 
+        });
 
         return res.status(201).json({ mensaje: "Producto creado con éxito", producto: nuevoProducto, imagenes: nuevasImagenes });
     } catch (error) {

@@ -1,0 +1,121 @@
+.newProduct {
+  display: flex;
+  justify-content: center;
+  .container {
+    width: 80%;
+
+    form {
+      width: 100%;
+      text-align: left;
+
+      border-radius: 5px;
+
+      overflow: hidden;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      .containerImg {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: hidden;
+        gap: 10px;
+
+        .imgPrimaria,
+        .imgSecundarias {
+          .input {
+            background-color: #1f2937;
+            border-radius: 5px;
+            overflow: hidden;
+          }
+        }
+        .imgPrimaria {
+          * {
+            min-height: 450px;
+            max-height: 800px;
+            width: 100%;
+          }
+        }
+
+        .imgSecundarias {
+          * {
+            aspect-ratio: 5/5;
+            width: 100%;
+          }
+        }
+
+        .input {
+          label {
+            border: 5px dashed rgba(#d3d3d3, 0.6);
+            width: 100%;
+            display: block;
+
+            img {
+              object-fit: cover;
+            }
+            img:empty {
+              display: none;
+            }
+          }
+
+          input[type="file"] {
+            visibility: hidden;
+            display: none;
+          }
+        }
+
+        .imgSecundarias {
+          @include distribucion-responsiva(30%, 1fr);
+          gap: 10px;
+        }
+      }
+    }
+
+    form {
+      .containerInfo {
+        border: 1px solid rgba(#6366f1, 0.5);
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+
+        label {
+          margin: 0;
+          padding: 0;
+
+          font-weight: 700;
+          color: #282828;
+          font-size: 18px;
+          margin-bottom: 20px;
+          display: block;
+        }
+
+        textarea{
+            max-height: 85px;
+            min-height: 85px;
+        }
+        input, textarea, select {
+          width: 100%;
+          margin-bottom: 20px;
+          height: 40px;
+          border-radius: 5px;
+          padding: 10px 5px;
+          border: 1px solid rgba(#6366f1, 0.5);
+
+          color: #1f2937;
+
+          &[type="submit"] {
+            background-color: #6366f1;
+          
+            bottom: 20px;
+            width: 100%;
+
+            &:hover {
+              background-color: #4f46e5;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
