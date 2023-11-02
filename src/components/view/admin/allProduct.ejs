@@ -16,18 +16,12 @@
             <span class="text-xs">All products item</span>
           </div>
           <div class="flex items-center justify-between">
-         
             <div class="lg:ml-40 ml-10 space-x-8">
-              <button
-                class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"
-              >
-                New Report
-              </button>
-              <button
+              <a href="/admin/new"
                 class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"
               >
                 Create
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -43,6 +37,11 @@
                       class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
                     >
                       id
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
+                      Img
                     </th>
                     <th
                       class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
@@ -67,40 +66,47 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <% for (let i = 0; i < productos.length; i++) { %>
                   <tr>
                     <td
                       class="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                     >
-                      <p class="text-gray-900 whitespace-no-wrap">43</p>
+                      <p class="text-gray-900 whitespace-no-wrap">
+                        <%= productos[i].id %>
+                      </p>
                     </td>
+
+                    <td
+                      class="px-5 py-5 border-b border-gray-200 bg-white text-sm"
+                    >
+                      <img
+                        class="w-full h-full rounded-full"
+                        src="<%= productos[i].imagenes[0].url %> "
+                        alt=""
+                      />
+                    </td>
+
                     <td
                       class="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                     >
                       <div class="flex items-center">
-                        <div class="flex-shrink-0 w-10 h-10">
-                          <img
-                            class="w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                            alt=""
-                          />
-                        </div>
-                        <div class="ml-3">
-                          <p class="text-gray-900 whitespace-no-wrap">
-                            Vera Carpenter
-                          </p>
-                        </div>
+                        <p class="text-gray-900 whitespace-no-wrap">
+                          <%= productos[i].nombre %>
+                        </p>
                       </div>
                     </td>
                     <td
                       class="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                     >
-                      <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                      <p class="text-gray-900 whitespace-no-wrap">
+                        <%= productos[i].categoria %>
+                      </p>
                     </td>
                     <td
                       class="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                     >
                       <p class="text-gray-900 whitespace-no-wrap">
-                        Jan 21, 2020
+                        <%= productos[i].precio %>
                       </p>
                     </td>
 
@@ -118,14 +124,13 @@
                       </span>
                     </td>
                   </tr>
+                  <% } %>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-
-     
       <!--  -->
     </div>
   </main>

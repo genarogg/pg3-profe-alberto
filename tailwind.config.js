@@ -3,7 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,ejs}"],
   theme: {
     extend: {
-
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
     },
   },
   plugins: [
