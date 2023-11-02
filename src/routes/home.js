@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
     res.render('home'); // Renderiza la vista index.ejs
 });
 
+router.get('/demo', (req, res) => {
+    res.render('demo'); // Renderiza la vista index.ejs
+});
+
 router.get('/login', (req, res) => {
     res.render('login'); // Renderiza la vista login.ejs
 });
@@ -17,6 +21,7 @@ router.get('/login', (req, res) => {
 router.post("/login", (req, res) => {
     const { email, password } = req.body;
 
+    console.log(req.body)
     const data = {
         email,
         password

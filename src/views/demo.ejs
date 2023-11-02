@@ -1,0 +1,30 @@
+<%- include('../components/layout/head.ejs', {title: 'login'}) -%> <%-
+include('../components/view/admin/nav.ejs') -%>
+
+<form action="/db/new-producto" method="POST" enctype="multipart/form-data">
+  <label for="nombre">Nombre:</label>
+  <input type="text" name="nombre" required /><br />
+
+  <label for="codigo">Código:</label>
+  <input type="text" name="codigo" required /><br />
+
+  <label for="precio">Precio:</label>
+  <input type="number" name="precio" required /><br />
+
+  <label for="descripcion">Descripción:</label>
+  <textarea name="descripcion" rows="3"></textarea><br />
+
+  <label for="categoria_id">Categoría:</label>
+  <select name="categoria_id">
+    <!-- Opciones de categoría -->
+    <option value="valor">valor</option>
+    </select
+  ><br />
+
+  <label for="imagen">Imagen:</label>
+  <input type="file" name="imagen" /><br />
+
+  <button type="submit">Crear Producto</button>
+</form>
+
+<%- include('../components/layout/bodyEnd.ejs') -%>

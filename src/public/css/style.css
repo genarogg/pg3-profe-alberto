@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", "Crete Round", sans-serif;
+  background-color: #111827;
 }
 
 .loginAdmin {
@@ -14,10 +15,171 @@ body {
           align-items: center;
   min-height: 100vh;
   min-height: 100dvh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.loginAdmin .container {
+.loginAdmin form {
   height: 300px;
-  width: 800px;
+  width: 360px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  padding: 10px 20px;
+}
+.loginAdmin form h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: #e5e7eb;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.loginAdmin form input {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 10px 5px;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+}
+.loginAdmin form input[type="submit"] {
+  background-color: #6366f1;
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 40px);
+}
+.loginAdmin form input[type="submit"]:hover {
+  background-color: #4f46e5;
+  cursor: pointer;
+}
+
+.allProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.allProduct header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 14px;
+}
+.allProduct header h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: #e5e7eb;
+  font-size: 18px;
+}
+.allProduct header button {
+  background-color: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 10px;
+}
+.allProduct header button:hover {
+  background-color: #4f46e5;
+  cursor: pointer;
+}
+.allProduct .containerProduct {
+  width: 90%;
+}
+.allProduct .containerProduct table {
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  /* min-height: 70vh; */
+  overflow: hidden;
+}
+.allProduct .containerProduct table thead {
+  background-color: #6366f1;
+  color: #fff;
+  font-weight: 700;
+}
+.allProduct .containerProduct table td,
+.allProduct .containerProduct table th {
+  padding: 10px 10px;
+}
+.allProduct .containerProduct table tbody tr:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+header.dashboard {
+  background-color: #1f2937;
+  width: 100%;
+  height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 5vh;
+}
+header.dashboard .container {
+  width: 90%;
+}
+header.dashboard .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* justify-content: center; */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 64px;
+  /* padding: 0 40px; */
+  gap: 40px;
+}
+header.dashboard .container ul li {
+  /* margin-left: 40px; */
+}
+header.dashboard .container ul li a {
+  color: #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: calc(100% + 30px);
+  border-radius: 5px;
+}
+header.dashboard .container ul li a.active {
+  background-color: #4f46e5;
 }
 
 @-webkit-keyframes show {

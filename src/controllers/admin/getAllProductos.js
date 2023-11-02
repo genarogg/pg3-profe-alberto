@@ -20,7 +20,7 @@ const getAllProductos = async (req, res) => {
     });
 
     // Mapea los productos y sus imágenes
-    const transformedData = {
+    const producto = {
       "productos": productos.map(item => {
         const productoData = {
           "id": item.dataValues.id,
@@ -46,8 +46,8 @@ const getAllProductos = async (req, res) => {
         return productoData;
       }),
     };
-
-    return transformedData;
+    res.render('admin/allProduct', producto);
+    /* return transformedData; */
   } catch (error) {
     console.error("Error al obtener los productos:", error.message);
   }

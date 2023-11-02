@@ -1,6 +1,7 @@
 import path from 'node:path';
 import express from 'express';
 
+
 const app = express();
 
 const joiner = (pathx) => {
@@ -18,6 +19,8 @@ app.use(express.static(joiner('/public')));
 // habilitando el motor de plantillas ejs 
 app.set('views', joiner('/views'));
 app.set("view engine", "ejs");
+
+
 
 //Conexión a la base de datos
 
