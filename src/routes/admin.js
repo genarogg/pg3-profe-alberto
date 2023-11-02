@@ -1,29 +1,22 @@
 import express from 'express';
-import dotenv from 'dotenv';
-dotenv.config();
-const { USER_ADMIN, PASS_ADMIN } = process.env
+import { getAllProductos } from "../controllers/adminController.js";
 
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-    res.render('admin/login'); // Renderiza la vista login.ejs
-});
 
-router.post("/login", (req, res) => {
-    const { name, password } = req.body;
+router.get('/', async (req, res) => {
+    try {
+        const producto = await getAllProductos(); // Llama a la función getAllProductos
+        const p = producto
 
-    const data = {
-        email: name,
-        password
+        console.log(p);
+
+        // Renderiza la vista con los productos obtenidos
+        res.render('admin/allProduct', p);
+    } catch (error) {
+        console.error("Error al obtener los productos:", error);
+        // Maneja el error apropiadamente, por ejemplo, mostrando un mensaje de error en la vista.
+        res.render('error', { message: 'Error al obtener los productos.' });
     }
-    res.json({ redirect: "/admin" });
-    if (data.email === USER_ADMIN && password === PASS_ADMIN) {
-
-    }
-})
-
-router.get('/', (req, res) => {
-    res.render('admin/admin'); // Renderiza la vista login.ejs
 });
-
 export default router;

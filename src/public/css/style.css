@@ -1,5 +1,4 @@
 body {
-  background-color: #1c0049;
   font-family: "Lato", "Crete Round", sans-serif;
 }
 
@@ -16,43 +15,9 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
 }
-.loginAdmin #formAdmin {
+.loginAdmin .container {
   height: 300px;
-  width: 360px;
-  border: 1px solid #ffffff80;
-  border-radius: 8px;
-  padding: 10px 20px;
-  background-color: #2f0064;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.loginAdmin #formAdmin h2 {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 20px;
-}
-.loginAdmin #formAdmin .containerInput label {
-  display: block;
-  margin-bottom: 5px;
-}
-.loginAdmin #formAdmin .containerInput input {
-  width: 100%;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ffffff80;
-}
-.loginAdmin #formAdmin #sendForm {
-  position: absolute;
-  bottom: 20px;
-  -ms-flex-item-align: center;
-      align-self: center;
+  width: 800px;
 }
 
 @-webkit-keyframes show {
