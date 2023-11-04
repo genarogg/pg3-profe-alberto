@@ -1,4 +1,4 @@
-<%- include("./nav.ejs", active="active") %>
+<%- include("./nav.ejs", {activeNavItem: "inicio"}) %>
 
 <div class="newProduct update">
   <div class="container">
@@ -8,10 +8,7 @@
           <div class="input" onchange="cargarImagen(event)">
             <label for="img1">
               <input type="file" name="img1" id="img1" />
-              <img
-                src="<%= productoTransformado.imgs[0].name %>"
-                alt=""
-                id="img1Preview"
+              <img src="<%= producto.imgs[0].name %>" alt="" id="img1Preview"
             /></label>
           </div>
         </div>
@@ -19,29 +16,19 @@
           <div class="input" onchange="cargarImagen(event)">
             <label for="img2">
               <input type="file" name="img2" id="img2" />
-              <img
-                src="<%= productoTransformado.imgs[1].name %>"
-                alt=""
-                id="img2Preview"
-              />
+              <img src="<%= producto.imgs[1].name %>" alt="" id="img2Preview" />
             </label>
           </div>
           <div class="input" onchange="cargarImagen(event)">
             <label for="img3"
               ><input type="file" name="img3" id="img3" />
-              <img
-                src="<%= productoTransformado.imgs[2].name %>"
-                alt=""
-                id="img3Preview"
+              <img src="<%= producto.imgs[2].name %>" alt="" id="img3Preview"
             /></label>
           </div>
           <div class="input" onchange="cargarImagen(event)">
             <label for="img4">
               <input type="file" name="img4" id="img4" />
-              <img
-                src="<%= productoTransformado.imgs[3].name %>"
-                alt=""
-                id="img4Preview"
+              <img src="<%= producto.imgs[3].name %>" alt="" id="img4Preview"
             /></label>
           </div>
         </div>
@@ -54,13 +41,13 @@
           name="nombre"
           id="nombre"
           required
-          value="<%= productoTransformado.nombre %>"
+          value="<%= producto.nombre %>"
         />
 
         <label for="descripcion">Descripción:</label>
         <textarea name="descripcion" id="descripcion" rows="3" value="">
-<%= productoTransformado.descripcion %></textarea
-        >
+            <%= producto.descripcion %>
+        </textarea>
 
         <label for="codigo">Código:</label>
         <input
@@ -68,24 +55,23 @@
           name="codigo"
           id="codigo"
           required
-          value="<%= productoTransformado.codigo %>"
+          value="<%= producto.codigo %>"
         />
 
         <label for="precio">Precio:</label>
         <input type="number" name="precio" id="precio" required value="<%=
-        productoTransformado.precio %>"/ />
+        producto.precio %>"/ />
 
         <label for="categoria">Categoría:</label>
         <select name="categoria" id="categoria">
-          <option value="<%= productoTransformado.categoria %>" selected>
-            <%= productoTransformado.categoria %>
+          <option value="<%= producto.categoria %>" selected>
+            <%= producto.categoria %>
           </option>
-          <option value="valor">valor</option>
-          <option value="valor2">valor2</option>
-          <option value="valor3">valor3</option>
-          <option value="valor4">valor4</option>
-          <option value="valor5">valor5</option>
-          <option value="valor6">valor6</option>
+          <% categorias.forEach(function(categoria) { %>
+          <option value="<%= categoria.dataValues.id %>">
+            <%= categoria.dataValues.nombre %>
+          </option>
+          <% }); %>
         </select>
 
         <input type="submit" value="Crear Producto" />

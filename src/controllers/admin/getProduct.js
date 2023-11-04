@@ -44,10 +44,13 @@ const getProduct = async (req, res) => {
         }
 
         const productoTransformado = transformarProducto(producto.dataValues);
-        console.log(productoTransformado);
+
+        const categorias = await Categoria.findAll(); // Busca todas las categorías en la base de datos
+
+       
 
         // Renderiza la vista "newProduct.ejs" con los datos del producto, la imagen y la categoría
-        res.render('admin/updateProduct', { productoTransformado });
+        res.render('admin/updateProduct', { producto: productoTransformado, categorias });
 
     } catch (error) {
         console.error("Error al obtener el producto:", error);

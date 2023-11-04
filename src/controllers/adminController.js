@@ -5,4 +5,6 @@ import getAllCategories from "./admin/getAllCategories.js";
 import newCategorie from "./admin/newCategorie.js";
 import updateCategorie from "./admin/updateCategorie.js";
 
-export { getAllProductos, getProduct, getAllCategories, newCategorie, updateCategorie };
+import newProducto from "./admin/newProducto.js";
+
+export { getAllProductos,newProducto, getProduct, getAllCategories, newCategorie, updateCategorie };
