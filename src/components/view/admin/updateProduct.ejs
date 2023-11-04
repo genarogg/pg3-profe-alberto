@@ -74,7 +74,7 @@
           <% }); %>
         </select>
 
-        <input type="submit" value="Crear Producto" />
+        <input type="submit" value="Actualizar Producto" />
       </div>
     </form>
   </div>
@@ -137,7 +137,7 @@
       .then((response) => {
         console.log("Success:", response);
 
-        /* if(response.status === 201) window.location.href = "/admin"; */
+        if(response.status === 200) window.location.href = "/admin";
         // Puedes redirigir o realizar otras acciones después de completar la carga
       })
       .catch((error) => console.error("Error:", error));
