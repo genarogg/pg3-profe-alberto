@@ -1,6 +1,6 @@
-import Producto from '../../models/producto/Producto.js';
-import Categoria from '../../models/producto/Categorias.js';
-import Imagen from '../../models/producto/Imagenes.js';
+const Producto = require('../../models/producto/Producto.js');
+const Categoria = require('../../models/producto/Categorias.js');
+const Imagen = require('../../models/producto/Imagenes.js');
 
 const guardarImagenes = async (productoId, imagenes) => {
     const imagenesGuardadas = [];
@@ -25,7 +25,8 @@ const crearProducto = async (req, res) => {
     try {
         console.log();
         const { nombre, codigo, precio, descripcion, categoria } = req.body;
-    console.log(categoria)
+        console.log(categoria);
+
         /* const nuevaCategoria = await Categoria.create({ nombre: categoria });
          */
 
@@ -46,4 +47,4 @@ const crearProducto = async (req, res) => {
     }
 };
 
-export default crearProducto;
+module.exports = crearProducto;

@@ -1,10 +1,8 @@
+const getAllProductos = require("./admin/getAllProductos.js");
+const getProduct = require("./admin/getProduct.js");
+const getAllCategories = require("./admin/getAllCategories.js");
+const newCategorie = require("./admin/newCategorie.js");
+const updateCategorie = require("./admin/updateCategorie.js");
+const newProducto = require("./admin/newProducto.js");
 
-import getAllProductos from "./admin/getAllProductos.js";
-import getProduct from "./admin/getProduct.js";
-import getAllCategories from "./admin/getAllCategories.js";
-import newCategorie from "./admin/newCategorie.js";
-import updateCategorie from "./admin/updateCategorie.js";
-
-import newProducto from "./admin/newProducto.js";
-
-export { getAllProductos,newProducto, getProduct, getAllCategories, newCategorie, updateCategorie };
+module.exports = { getAllProductos, newProducto, getProduct, getAllCategories, newCategorie, updateCategorie };

@@ -1,6 +1,6 @@
-import Producto from "../../models/producto/Producto.js"; // Importa el modelo de Productos
-import Categoria from "../../models/producto/Categorias.js"; // Importa el modelo de Categorías
-import Imagen from "../../models/producto/Imagenes.js"; // Importa el modelo de Imagenes
+const Producto = require("../../models/producto/Producto.js"); // Importa el modelo de Productos
+const Categoria = require("../../models/producto/Categorias.js"); // Importa el modelo de Categorías
+const Imagen = require("../../models/producto/Imagenes.js"); // Importa el modelo de Imagenes
 
 const actualizarImagenes = async (productoId, imagenes) => {
     const imagenesActualizadas = [];
@@ -30,11 +30,8 @@ const actualizarImagenes = async (productoId, imagenes) => {
     for (const imagenData of arregloConIds) {
         const { id, name, destacada } = imagenData;
 
-
         // Encuentra la imagen existente con el mismo ID
         const imagenExistente = imagenesExisten.find(imagen => imagen.id === id);
-
-
 
         if (name === "fileName") continue
 
@@ -97,6 +94,4 @@ const updateProducto = async (req, res) => {
     }
 };
 
-export default updateProducto;
-
-
+module.exports = updateProducto;

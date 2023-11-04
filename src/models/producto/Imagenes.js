@@ -1,5 +1,5 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../../config/sqliteConfig.js";
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../../config/sqliteConfig.js");
 
 class Imagen extends Model { }
 
@@ -17,9 +17,9 @@ Imagen.init({
         allowNull: false,
     },
 },
-    {
-        sequelize,
-        modelName: "imagen"
-    });
+{
+    sequelize,
+    modelName: "imagen"
+});
 
-export default Imagen;
+module.exports = Imagen;

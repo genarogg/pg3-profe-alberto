@@ -1,4 +1,4 @@
-import Producto from '../../models/producto/Producto.js';
+const Producto = require('../../models/producto/Producto.js');
 
 // Controlador para eliminar un producto por su ID
 const deleteProducto = async (req, res) => {
@@ -23,4 +23,4 @@ const deleteProducto = async (req, res) => {
     }
 };
 
-export default deleteProducto;
+module.exports = deleteProducto;

@@ -1,3 +1,3 @@
-import login from "./auth/login.js";
+const login = require("./auth/login.js");
 
-export { login };
+module.exports = { login };

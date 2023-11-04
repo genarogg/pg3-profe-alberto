@@ -1,18 +1,14 @@
-import express from 'express';
-import { getAllProductos, getProduct, getAllCategories, newProducto } from "../controllers/adminController.js";
+const express = require('express');
+const adminController = require('../controllers/adminController.js');
 
 const router = express.Router();
 
+router.get('/', adminController.getAllProductos);
 
-router.get('/', getAllProductos);
+router.get('/new', adminController.newProducto);
 
-router.get('/new', newProducto)
+router.get('/update-producto/:id', adminController.getProduct);
 
-router.get('/update-producto/:id', getProduct)
-/*  */
+router.get('/categoria', adminController.getAllCategories);
 
-router.get('/categoria', getAllCategories)
-
-
-
-export default router;
+module.exports = router;
