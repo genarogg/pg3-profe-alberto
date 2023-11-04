@@ -23,7 +23,7 @@ Producto.init({
   },
   categoria_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+
   },
 },
   {

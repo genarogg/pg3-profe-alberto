@@ -73,9 +73,11 @@ const updateProducto = async (req, res) => {
         if (!productoCategoria) {
             productoCategoria = await Categoria.create({ nombre: categoria });
         }
+        console.log(productoCategoria);
 
-        productoExistente.categoria_id = productoCategoria.nombre;
+        productoExistente.categoria_id = productoCategoria.id;
 
+        console.log(productoExistente);
         // Guarda los cambios en el producto
         await productoExistente.save();
 
