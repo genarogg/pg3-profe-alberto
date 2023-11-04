@@ -3,10 +3,30 @@
 <header class="dashboard">
   <div class="container">
     <ul>
-      <li><a href="/admin" class="active">All Product</a></li>
-      <li><a href="#">more link</a></li>
-      <li><a href="#">more link</a></li>
-      <li><a href="#">more link</a></li>
+      <li>
+        <a
+          href="/admin"
+          class="<%= activeNavItem === 'inicio' ? 'active' : '' %>"
+          >All Product</a
+        >
+      </li>
+      <li>
+        <a
+          href="/admin/categoria"
+          class="<%= activeNavItem === 'categoria' ? 'active' : '' %>"
+          >more link</a
+        >
+      </li>
+      <li>
+        <a href="#" class="<%= activeNavItem === 'otro' ? 'active' : '' %>"
+          >more link</a
+        >
+      </li>
+      <li>
+        <a href="#" class="<%= activeNavItem === 'otro' ? 'active' : '' %>"
+          >more link</a
+        >
+      </li>
     </ul>
   </div>
 </header>

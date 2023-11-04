@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllProductos, getProduct } from "../controllers/adminController.js";
+import { getAllProductos, getProduct, getAllCategories } from "../controllers/adminController.js";
 
 const router = express.Router();
 
@@ -13,6 +13,8 @@ router.get('/new', (req, res) => {
 router.get('/update-producto/:id', getProduct)
 /*  */
 
-/* router.get('/new/:id', getProduct) */
+router.get('/categoria', getAllCategories)
+
+
 
 export default router;

@@ -5,6 +5,9 @@ import {
   updateProducto,
   deleteProducto
 } from '../controllers/productoController.js';
+
+import { newCategorie } from '../controllers/adminController.js';
+
 import upload from '../config/multer.js';
 
 const router = express.Router();
@@ -26,5 +29,7 @@ router.put('/update-producto/:id', upload.fields([
 ]), updateProducto);
 
 router.delete('/delete/:productoId', deleteProducto);
+
+router.post('/new-categoria', newCategorie)
 
 export default router;

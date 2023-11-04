@@ -1,10 +1,7 @@
-<%- include('../../layout/head.ejs', {title: 'dashboard'}) -%>
-
-<div class="min-h-full">
-  <%- include("./nav.ejs") %>
+<%- include("./nav.ejs", {activeNavItem: "inicio"}) %>
 
   <!-- main -->
-  <main class="allProduct">
+ <main class="allProduct">
     <div class="containerProduct">
       <header>
         <h2>all Product</h2>
@@ -53,8 +50,8 @@
         </tbody>
       </table>
     </div>
-  </main>
-</div>
+</main>
+
 
 <script>
   const deleteProduct = (e) => {
