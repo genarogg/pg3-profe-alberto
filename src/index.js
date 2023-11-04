@@ -20,8 +20,6 @@ app.use(express.static(joiner('/public')));
 app.set('views', joiner('/views'));
 app.set("view engine", "ejs");
 
-
-
 //Conexión a la base de datos
 
 import sequelize from './config/sqliteConfig.js';

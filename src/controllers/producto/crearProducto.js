@@ -2,18 +2,32 @@ import Producto from '../../models/producto/Producto.js';
 import Categoria from '../../models/producto/Categorias.js';
 import Imagen from '../../models/producto/Imagenes.js';
 
+const guardarImagenes = async (productoId, imagenes) => {
+    const imagenesGuardadas = [];
+
+    for (const imagenData of imagenes) {
+        const { name, destacada } = imagenData;
+
+        // Crea una nueva imagen y guarda en la base de datos
+        const nuevaImagen = await Imagen.create({
+            producto_id: productoId,
+            url: "/uploads/" + name,
+            destacado: destacada,
+        });
+
+        imagenesGuardadas.push(nuevaImagen);
+    }
+
+    return imagenesGuardadas;
+};
+
 const crearProducto = async (req, res) => {
-
     try {
-        // Datos del producto desde la solicitud
         console.log();
-
-        const { nombre, codigo, precio, descripcion, categoria, imagen } = req.body;
-
-        // Crea la categoría
+        const { nombre, codigo, precio, descripcion, categoria } = req.body;
+    
         const nuevaCategoria = await Categoria.create({ nombre: categoria });
 
-        // Crea el producto y asocia la categoría
         const nuevoProducto = await Producto.create({
             nombre,
             codigo,
@@ -22,21 +36,13 @@ const crearProducto = async (req, res) => {
             categoria_id: nuevaCategoria.id,
         });
 
-        // Crea las imágenes asociadas al producto
-        
-       /*  const url = `/uploads/${req.file.originalname}`
-        const nuevasImagenes = await Imagen.create({
-            producto_id: nuevoProducto.id,
-            url,
- 
-        }); */
+        const nuevasImagenes = await guardarImagenes(nuevoProducto.id, JSON.parse(req.body.imgs));
 
-        return res.status(201).json({ mensaje: "Producto creado con éxito", producto: nuevoProducto, imagenes: nuevasImagenes });
+        res.status(201).json({ mensaje: "Producto creado con éxito", producto: nuevoProducto, imagenes: nuevasImagenes, redirect: '/admin' });
     } catch (error) {
         console.error("Error al crear el producto:", error);
         return res.status(500).json({ mensaje: "Error al crear el producto" });
     }
-
-}
+};
 
 export default crearProducto;

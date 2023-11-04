@@ -19,9 +19,36 @@ const getProduct = async (req, res) => {
             return res.status(404).json({ mensaje: "Producto no encontrado" });
         }
 
+
+        const transformarProducto = (objetoOriginal) => {
+            const { nombre, descripcion, codigo, precio } = objetoOriginal;
+            const categoria = objetoOriginal.categoria.nombre;
+            const imgs = objetoOriginal.imagenes.map((imagen) => {
+                return {
+                    name: imagen.dataValues.url, // Asumiendo que el nombre de la imagen se encuentra en dataValues
+                    destacada: imagen.dataValues.destacado, // Asumiendo que destacada se encuentra en dataValues
+                };
+            });
+
+            const objetoTransformado = {
+                nombre,
+                descripcion,
+                codigo,
+                precio: precio.toString(),
+                categoria,
+                imgs,
+            };
+
+            return objetoTransformado;
+
+        }
+
+        const productoTransformado = transformarProducto(producto.dataValues);
+        console.log(productoTransformado);
+
         // Renderiza la vista "newProduct.ejs" con los datos del producto, la imagen y la categoría
-        res.render('admin/newProduct', { producto });
-        /* res.status(200).json({ producto }); */
+        res.render('admin/updateProduct', { productoTransformado });
+
     } catch (error) {
         console.error("Error al obtener el producto:", error);
         return res.status(500).json({ mensaje: "Error al obtener el producto" });

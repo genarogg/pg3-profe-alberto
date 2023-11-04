@@ -1,40 +1,92 @@
 import Producto from "../../models/producto/Producto.js"; // Importa el modelo de Productos
 import Categoria from "../../models/producto/Categorias.js"; // Importa el modelo de Categorías
+import Imagen from "../../models/producto/Imagenes.js"; // Importa el modelo de Imagenes
 
-// Controlador para actualizar un producto por su ID
+const actualizarImagenes = async (productoId, imagenes) => {
+    const imagenesActualizadas = [];
+
+    // Recupera las imágenes existentes asociadas al producto
+    const imagenesExisten = await Imagen.findAll({
+        where: { producto_id: productoId }
+    });
+
+    const asignarIdsAImagenes = (arr, imagenesExisten) => {
+        // Verifica que los arreglos tengan la misma longitud
+        if (arr.length !== imagenesExisten.length) {
+            throw new Error("Los arreglos tienen diferentes longitudes.");
+        }
+
+        // Itera sobre el arreglo de imágenes y asigna un ID a cada elemento
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].id = imagenesExisten[i].dataValues.id;
+        }
+
+        return arr;
+    }
+
+    const arregloConIds = asignarIdsAImagenes(imagenes, imagenesExisten);
+
+    // Itera sobre las imágenes existentes y las actualiza según los datos proporcionados
+    for (const imagenData of arregloConIds) {
+        const { id, name, destacada } = imagenData;
+
+
+        // Encuentra la imagen existente con el mismo ID
+        const imagenExistente = imagenesExisten.find(imagen => imagen.id === id);
+
+
+
+        if (name === "fileName") continue
+
+        if (imagenExistente) {
+            // Actualiza las propiedades de la imagen existente
+            imagenExistente.url = "/uploads/" + name;
+            imagenExistente.destacado = destacada;
+
+            // Guarda la imagen actualizada en la base de datos
+            await imagenExistente.save();
+
+            imagenesActualizadas.push(imagenExistente);
+        }
+    }
+
+    return imagenesActualizadas;
+};
+
 const updateProducto = async (req, res) => {
     try {
-        const { productoId } = req.params; // Obtiene el ID del producto de los parámetros de la URL
-        const { nombre, codigo, precio, descripcion, categoria } = req.body;
+        const { nombre, codigo, precio, descripcion, categoria, imgs } = req.body;
 
-        // Busca el producto por su ID
-        const producto = await Producto.findByPk(productoId);
+        const productId = req.params.id;
+        // Comprueba si el producto existe en la base de datos
+        const productoExistente = await Producto.findByPk(productId);
 
-        if (!producto) {
-            return res.status(404).json({ mensaje: "Producto no encontrado" });
+        if (!productoExistente) {
+            return res.status(404).json({ mensaje: "El producto no existe." });
         }
 
-        // Si se proporciona una nueva categoría, busca o crea la categoría
-        let nuevaCategoria;
-        if (categoria) {
-            nuevaCategoria = await Categoria.findOrCreate({ where: { nombre: categoria } });
-        }
+        // Actualiza los datos del producto
+        productoExistente.nombre = nombre;
+        productoExistente.codigo = codigo;
+        productoExistente.precio = precio;
+        productoExistente.descripcion = descripcion;
 
-        // Actualiza las propiedades del producto
-        producto.nombre = nombre || producto.nombre;
-        producto.codigo = codigo || producto.codigo;
-        producto.precio = precio || producto.precio;
-        producto.descripcion = descripcion || producto.descripcion;
+        // Actualiza la categoría (puedes implementar la lógica según tus necesidades)
+        const nuevaCategoria = await Categoria.create({ nombre: categoria });
+        productoExistente.categoria_id = nuevaCategoria.id;
 
-        // Asigna la nueva categoría si se proporciona
-        if (nuevaCategoria) {
-            producto.categoria_id = nuevaCategoria[0].id;
-        }
+        // Guarda los cambios en el producto
+        await productoExistente.save();
 
-        // Guarda los cambios en la base de datos
-        await producto.save();
+        // Actualiza las imágenes del producto
+        const imagenesActualizadas = await actualizarImagenes(productId, JSON.parse(imgs));
 
-        return res.status(200).json({ mensaje: "Producto actualizado con éxito", producto });
+        res.status(200).json({
+            mensaje: "Producto actualizado con éxito",
+            producto: productoExistente,
+            imagenes: imagenesActualizadas,
+            redirect: '/admin'
+        });
     } catch (error) {
         console.error("Error al actualizar el producto:", error);
         return res.status(500).json({ mensaje: "Error al actualizar el producto" });
@@ -42,3 +94,5 @@ const updateProducto = async (req, res) => {
 };
 
 export default updateProducto;
+
+

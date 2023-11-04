@@ -1,0 +1,101 @@
+<%- include('../../layout/head.ejs', {title: 'dashboard'}) -%>
+
+<div class="min-h-full">
+  <%- include("./nav.ejs") %>
+
+  <!-- main -->
+  <main class="allProduct">
+    <div class="containerProduct">
+      <header>
+        <h2>all Product</h2>
+        <button>
+          <a href="/admin/new">add Product</a>
+        </button>
+      </header>
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>price</th>
+            <th>codigo</th>
+            <th>category</th>
+            <th>action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for (let i = 0; i < productos.length; i++) { %>
+          <tr>
+            <td><%= productos[i].id %></td>
+            <td>
+              <img
+                src="<%= productos[i].imagenes.find(img => img.destacado).url
+              %>"
+                alt=""
+              />
+
+              <%= productos[i].nombre %>
+            </td>
+            <td>$<%= productos[i].precio %></td>
+            <td><%= productos[i].codigo %></td>
+            <td><%= productos[i].categoria %></td>
+            <td>
+              <button><a href="/admin/update-producto/<%= productos[i].id %>">edit</a></button>
+              <button id="<%= productos[i].id %>" onclick="deleteProduct()">
+                delete
+              </button>
+              <!-- <td><%= //productos[i].descripcion %></td> -->
+            </td>
+          </tr>
+
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+  const deleteProduct = (e) => {
+    const id = document.activeElement.id;
+    const elementoDesaparecer =
+      document.activeElement.parentElement.parentElement;
+
+
+    const confirmacion = window.confirm(
+      "¿Estás seguro de que deseas continuar?"
+    );
+
+    if (!confirmacion) {
+      return;
+    }
+
+    fetch(`/db/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Producto eliminado con éxito
+          /* alert("Producto eliminado con éxito"); */
+
+          elementoDesaparecer.classList.add("delete");
+          setTimeout(() => {
+            elementoDesaparecer.remove();
+          }, 500);
+        } else {
+          // Error al eliminar el producto
+          alert("Error al eliminar el producto");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el producto:", error);
+        alert("Error al eliminar el producto");
+      });
+  };
+</script>
+
+<%- include('../../layout/bodyEnd.ejs') -%>

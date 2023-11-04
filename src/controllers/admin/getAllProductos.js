@@ -5,6 +5,8 @@ import Categoria from "../../models/producto/Categorias.js"; // Importa el model
 // Controlador para obtener todos los productos
 const getAllProductos = async (req, res) => {
   try {
+    
+    
     // Busca todos los productos en la base de datos e incluye las relaciones con Imagen y Categoria
     const productos = await Producto.findAll({
       include: [
@@ -46,6 +48,8 @@ const getAllProductos = async (req, res) => {
         return productoData;
       }),
     };
+
+    /* console.log(producto.productos[5].imagenes[0].url); */
     res.render('admin/allProduct', producto);
     /* return transformedData; */
   } catch (error) {

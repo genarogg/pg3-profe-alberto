@@ -1,0 +1,20 @@
+.newProduct.update {
+  .container {
+    form {
+      .containerImg {
+        .input {
+          label {
+            border: none;
+
+            img {
+              object-fit: cover;
+            }
+            img:empty {
+              display: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+}

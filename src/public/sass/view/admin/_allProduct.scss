@@ -29,7 +29,6 @@
     }
   }
   .containerProduct {
-   
     width: 90%;
 
     table {
@@ -53,6 +52,22 @@
       }
 
       tbody tr {
+        @include fade("show");
+        
+
+        &.delete{
+          @include fade("hide");
+        }
+
+        img {
+          @include cuadrado(25px);
+          display: inline;
+          margin-right: 10px;
+          border-radius: 50%;
+        }
+
+        
+
         &:hover {
           background-color: #f3f4f6;
           cursor: pointer;
