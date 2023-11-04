@@ -52,15 +52,17 @@ body {
   border-radius: 5px;
   padding: 10px 5px;
   border: 1px solid rgba(99, 102, 241, 0.5);
+  background-color: transparent !important;
 }
 .loginAdmin form input[type="submit"] {
-  background-color: #6366f1;
+  background-color: #6366f1 !important;
   position: absolute;
   bottom: 20px;
   width: calc(100% - 40px);
+  color: #fff !important;
 }
 .loginAdmin form input[type="submit"]:hover {
-  background-color: #4f46e5;
+  background-color: #4f46e5 !important;
   cursor: pointer;
 }
 
@@ -287,16 +289,11 @@ header.dashboard .container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* justify-content: center; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 64px;
-  /* padding: 0 40px; */
   gap: 40px;
-}
-header.dashboard .container ul li {
-  /* margin-left: 40px; */
 }
 header.dashboard .container ul li a {
   color: #ccc;

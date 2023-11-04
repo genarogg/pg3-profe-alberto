@@ -35,15 +35,17 @@ body {
       border-radius: 5px;
       padding: 10px 5px;
       border: 1px solid rgba(#6366f1, 0.5);
+      background-color: transparent !important;
+      
 
       &[type="submit"] {
-        background-color: #6366f1;
+        background-color: #6366f1 !important;
         position: absolute;
         bottom: 20px;
         width: calc(100% - 40px);
-
+        color: #fff !important;
         &:hover {
-          background-color: #4f46e5;
+          background-color: #4f46e5 !important;
           cursor: pointer;
         }
       }
