@@ -112,11 +112,15 @@ body {
 .allProduct .containerProduct {
   width: 90%;
 }
+.allProduct .containerProduct a {
+  color: #fff;
+}
 .allProduct .containerProduct table {
   width: 100%;
   text-align: left;
   background-color: #fff;
   border-radius: 5px;
+  border-collapse: collapse;
   border: 1px solid rgba(99, 102, 241, 0.5);
   /* min-height: 70vh; */
   overflow: hidden;
@@ -135,6 +139,9 @@ body {
   opacity: 1;
   -webkit-transition: visibility 1s, opacity 1s;
   transition: visibility 1s, opacity 1s;
+}
+.allProduct .containerProduct table tbody tr a {
+  color: #000;
 }
 .allProduct .containerProduct table tbody tr.delete {
   visibility: hidden;

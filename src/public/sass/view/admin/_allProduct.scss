@@ -31,12 +31,17 @@
   .containerProduct {
     width: 90%;
 
+    a{
+      color: #fff;
+     
+    }
+
     table {
       width: 100%;
       text-align: left;
       background-color: #fff;
       border-radius: 5px;
-
+      border-collapse: collapse;
       border: 1px solid rgba(#6366f1, 0.5);
       /* min-height: 70vh; */
       overflow: hidden;
@@ -53,6 +58,10 @@
 
       tbody tr {
         @include fade("show");
+
+        a{
+          color: #000
+        }
         
 
         &.delete{
