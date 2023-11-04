@@ -25,15 +25,16 @@ const crearProducto = async (req, res) => {
     try {
         console.log();
         const { nombre, codigo, precio, descripcion, categoria } = req.body;
-    
-        const nuevaCategoria = await Categoria.create({ nombre: categoria });
+    console.log(categoria)
+        /* const nuevaCategoria = await Categoria.create({ nombre: categoria });
+         */
 
         const nuevoProducto = await Producto.create({
             nombre,
             codigo,
             precio,
             descripcion,
-            categoria_id: nuevaCategoria.id,
+            categoria_id: categoria,
         });
 
         const nuevasImagenes = await guardarImagenes(nuevoProducto.id, JSON.parse(req.body.imgs));

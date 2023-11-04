@@ -53,13 +53,20 @@
       body: JSON.stringify(data),
     });
 
-    $("tbody").innerHTML += `<tr><td>${id}</td><td>${name}</td></tr>`;
+    $("tbody").innerHTML += `<tr>
+                                <td>${id}</td>
+                                <td>${name}</td>
+                                <td>
+                                <button id="${id}" onclick="updateCategorie()">
+                                  edit
+                                </button>
+                              </td>
+                            </tr>`;
   };
 
   const updateCategorie = () => {
     const id = document.activeElement.id;
 
-    
     const name = prompt("ingrese el nombre de la categoria");
 
     data = {
@@ -75,9 +82,10 @@
       },
       body: JSON.stringify(data),
     }).then((res) => {
-        console.log();
+      console.log();
 
-        let newTR = document.activeElement.parentNode.parentNode
-        newTR.children[1].innerHTML = name});
+      let newTR = document.activeElement.parentNode.parentNode;
+      newTR.children[1].innerHTML = name;
+    });
   };
 </script>

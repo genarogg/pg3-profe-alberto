@@ -71,9 +71,13 @@ const updateProducto = async (req, res) => {
         productoExistente.precio = precio;
         productoExistente.descripcion = descripcion;
 
-        // Actualiza la categoría (puedes implementar la lógica según tus necesidades)
-        const nuevaCategoria = await Categoria.create({ nombre: categoria });
-        productoExistente.categoria_id = nuevaCategoria.id;
+        // Busca la categoría existente o crea una nueva si no existe
+        let productoCategoria = await Categoria.findOne({ where: { nombre: categoria } });
+        if (!productoCategoria) {
+            productoCategoria = await Categoria.create({ nombre: categoria });
+        }
+
+        productoExistente.categoria_id = productoCategoria.nombre;
 
         // Guarda los cambios en el producto
         await productoExistente.save();
