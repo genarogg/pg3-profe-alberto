@@ -1,9 +1,9 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../../config/sqliteConfig.js");
-const Imagen = require("./Imagenes.js"); // Importa el modelo de Imagen
-const Categoria = require("./Categorias.js"); // Importa el modelo de Categoria
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../../config/sqliteConfig.js";
+import Imagen from "./Imagenes.js"; // Importa el modelo de Imagen
+import Categoria from "./Categorias.js"; // Importa el modelo de Categoria
 
-class Producto extends Model { }
+class Producto extends Model {}
 
 Producto.init({
   nombre: {
@@ -23,13 +23,13 @@ Producto.init({
   },
   categoria_id: {
     type: DataTypes.INTEGER,
-
+    allowNull: false,
   },
 },
-  {
-    sequelize,
-    modelName: "producto",
-  });
+{
+  sequelize,
+  modelName: "producto",
+});
 
 // Define la relación entre Producto e Imagen (uno a muchos)
 Producto.hasMany(Imagen, { foreignKey: 'producto_id', as: 'imagenes' });
@@ -37,4 +37,4 @@ Producto.hasMany(Imagen, { foreignKey: 'producto_id', as: 'imagenes' });
 // Define la relación entre Producto y Categoria (uno a uno)
 Producto.belongsTo(Categoria, { foreignKey: 'categoria_id', as: 'categoria' });
 
-module.exports = Producto;
+export default Producto;

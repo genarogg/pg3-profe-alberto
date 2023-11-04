@@ -1,9 +1,9 @@
-const Categoria = require("../../models/producto/Categorias.js");
+import Categoria from "../../models/producto/Categorias.js";
 
 const updateCategorie = async (req, res) => {
     try {
-
-        const categoriaId = req.params.id;
+       
+       const categoriaId = req.params.id;
         const { nombre } = req.body;
 
         const categoria = await Categoria.findByPk(categoriaId);
@@ -22,4 +22,4 @@ const updateCategorie = async (req, res) => {
     }
 };
 
-module.exports = updateCategorie;
+export default updateCategorie;

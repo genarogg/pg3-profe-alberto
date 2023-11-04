@@ -1,4 +1,4 @@
-const Categoria = require("../../models/producto/Categorias.js");
+import Categoria from "../../models/producto/Categorias.js";
 
 const newProducto = async (req, res) => {
     try {
@@ -10,4 +10,4 @@ const newProducto = async (req, res) => {
     }
 }
 
-module.exports = newProducto;
+export default newProducto;

@@ -1,5 +1,5 @@
-const express = require('express');
-const authController = require('../controllers/authController.js');
+import express from 'express';
+import { login } from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -15,6 +15,6 @@ router.get('/login', (req, res) => {
     res.render('login'); // Renderiza la vista login.ejs
 });
 
-router.post("/login", authController.login);
+router.post("/login", login)
 
-module.exports = router;
+export default router;

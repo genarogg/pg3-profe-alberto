@@ -1,6 +1,6 @@
-const Producto = require("../../models/producto/Producto.js"); // Importa el modelo de Productos
-const Imagen = require('../../models/producto/Imagenes.js'); // Importa el modelo de Imagen
-const Categoria = require('../../models/producto/Categorias.js'); // Importa el modelo de Categoria
+import Producto from "../../models/producto/Producto.js"; // Importa el modelo de Productos
+import Imagen from '../../models/producto/Imagenes.js'; // Importa el modelo de Imagen
+import Categoria from '../../models/producto/Categorias.js'; // Importa el modelo de Categoria
 
 // Controlador para obtener la información de un producto por su ID y renderizar la vista
 const getProduct = async (req, res) => {
@@ -18,6 +18,7 @@ const getProduct = async (req, res) => {
         if (!producto) {
             return res.status(404).json({ mensaje: "Producto no encontrado" });
         }
+
 
         const transformarProducto = (objetoOriginal) => {
             const { nombre, descripcion, codigo, precio } = objetoOriginal;
@@ -39,18 +40,22 @@ const getProduct = async (req, res) => {
             };
 
             return objetoTransformado;
+
         }
 
         const productoTransformado = transformarProducto(producto.dataValues);
 
         const categorias = await Categoria.findAll(); // Busca todas las categorías en la base de datos
 
+       
+
         // Renderiza la vista "newProduct.ejs" con los datos del producto, la imagen y la categoría
         res.render('admin/updateProduct', { producto: productoTransformado, categorias });
+
     } catch (error) {
         console.error("Error al obtener el producto:", error);
         return res.status(500).json({ mensaje: "Error al obtener el producto" });
     }
 };
 
-module.exports = getProduct;
+export default getProduct;

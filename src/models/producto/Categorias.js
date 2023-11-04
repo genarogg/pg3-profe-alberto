@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../../config/sqliteConfig.js");
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../../config/sqliteConfig.js";
 
 class Categoria extends Model { }
 
@@ -14,4 +14,4 @@ Categoria.init({
     modelName: "categoria"
 });
 
-module.exports = Categoria;
+export default Categoria;

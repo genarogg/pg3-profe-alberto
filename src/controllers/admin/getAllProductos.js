@@ -1,6 +1,6 @@
-const Producto = require("../../models/producto/Producto.js"); // Importa el modelo de Productos
-const Imagen = require("../../models/producto/Imagenes.js"); // Importa el modelo de Imagen
-const Categoria = require("../../models/producto/Categorias.js"); // Importa el modelo de Categoria
+import Producto from "../../models/producto/Producto.js"; // Importa el modelo de Productos
+import Imagen from "../../models/producto/Imagenes.js"; // Importa el modelo de Imagen
+import Categoria from "../../models/producto/Categorias.js"; // Importa el modelo de Categoria
 
 // Controlador para obtener todos los productos
 const getAllProductos = async (req, res) => {
@@ -57,4 +57,4 @@ const getAllProductos = async (req, res) => {
   }
 };
 
-module.exports = getAllProductos;
+export default getAllProductos;
