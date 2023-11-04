@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 
 //Conexión a la base de datos
 
-import sequelize from './config/sqliteConfig.js';
+import sequelize from './src/config/sqliteConfig.js';
 
 sequelize.sync({ logging: false }).then(() => {
     console.log("db conectada!");
@@ -31,9 +31,9 @@ sequelize.sync({ logging: false }).then(() => {
 //fin de la conexión a la base de datos
 
 // routers
-import home from './routes/home.js';
-import admin from './routes/admin.js';
-import db from './routes/db.js';
+import home from './src/routes/home.js';
+import admin from './src/routes/admin.js';
+import db from './src/routes/db.js';
 
 app.use('/', home)
 app.use('/admin', admin)
