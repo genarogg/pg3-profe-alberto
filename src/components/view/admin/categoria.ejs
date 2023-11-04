@@ -22,7 +22,11 @@
         <tr>
           <td><%= categoria.dataValues.id %> %></td>
           <td><%= categoria.dataValues.nombre %></td>
-          
+          <td>
+            <button id="<%= categoria.id %>" onclick="updateCategorie()">
+              edit
+            </button>
+          </td>
         </tr>
         <% }); %>
       </tbody>
@@ -50,5 +54,30 @@
     });
 
     $("tbody").innerHTML += `<tr><td>${id}</td><td>${name}</td></tr>`;
+  };
+
+  const updateCategorie = () => {
+    const id = document.activeElement.id;
+
+    
+    const name = prompt("ingrese el nombre de la categoria");
+
+    data = {
+      id,
+      nombre: name,
+    };
+
+    //creame un fetch que me mande a la ruta /db/new-categoria
+    fetch(`/db/update-categoria/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+        console.log();
+
+        let newTR = document.activeElement.parentNode.parentNode
+        newTR.children[1].innerHTML = name});
   };
 </script>

@@ -6,7 +6,7 @@ import {
   deleteProducto
 } from '../controllers/productoController.js';
 
-import { newCategorie } from '../controllers/adminController.js';
+import { newCategorie, updateCategorie } from '../controllers/adminController.js';
 
 import upload from '../config/multer.js';
 
@@ -31,5 +31,7 @@ router.put('/update-producto/:id', upload.fields([
 router.delete('/delete/:productoId', deleteProducto);
 
 router.post('/new-categoria', newCategorie)
+
+router.put('/update-categoria/:id', updateCategorie)
 
 export default router;
